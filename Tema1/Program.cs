@@ -19,6 +19,7 @@ namespace Tema1
             Console.WriteLine($"Daca x= {x}, y = {y}, z= {z}, operatia de inmultire mai este asociativa? {(Methods.CheckInmultireAsociativa(x,y,z)?"Adevarat":"Fals")}");
 
             /// 3.Aproximări polinomiale ale funcţiei sin
+            Methods.SinAproximation();
         }
     }
 }
