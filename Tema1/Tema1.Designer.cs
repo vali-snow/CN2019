@@ -51,6 +51,9 @@
             this.lblYA = new System.Windows.Forms.Label();
             this.lblZA = new System.Windows.Forms.Label();
             this.grb3 = new System.Windows.Forms.GroupBox();
+            this.grbHier = new System.Windows.Forms.GroupBox();
+            this.lblBestApprox = new System.Windows.Forms.Label();
+            this.txtBestApprox = new System.Windows.Forms.TextBox();
             this.txtCalcWithP6 = new System.Windows.Forms.TextBox();
             this.txtCalcWithP5 = new System.Windows.Forms.TextBox();
             this.txtCalcWithP4 = new System.Windows.Forms.TextBox();
@@ -58,14 +61,6 @@
             this.txtCalcWithP2 = new System.Windows.Forms.TextBox();
             this.txtCalcWithP1 = new System.Windows.Forms.TextBox();
             this.txtCalcWithMath = new System.Windows.Forms.TextBox();
-            this.grbBestApprox = new System.Windows.Forms.GroupBox();
-            this.cbxP6 = new System.Windows.Forms.CheckBox();
-            this.cbxP5 = new System.Windows.Forms.CheckBox();
-            this.cbxP4 = new System.Windows.Forms.CheckBox();
-            this.cbxP3 = new System.Windows.Forms.CheckBox();
-            this.cbxP2 = new System.Windows.Forms.CheckBox();
-            this.cbxP1 = new System.Windows.Forms.CheckBox();
-            this.btnStartSession = new System.Windows.Forms.Button();
             this.cbxCalculateSinValueWithP6 = new System.Windows.Forms.CheckBox();
             this.cbxCalculateSinValueWithP5 = new System.Windows.Forms.CheckBox();
             this.cbxCalculateSinValueWithP4 = new System.Windows.Forms.CheckBox();
@@ -74,12 +69,16 @@
             this.cbxCalculateSinValueWithP1 = new System.Windows.Forms.CheckBox();
             this.cbxCalculateSinValueWithMath = new System.Windows.Forms.CheckBox();
             this.cbxGenerateRandom = new System.Windows.Forms.CheckBox();
+            this.btnStartSession = new System.Windows.Forms.Button();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.txtTime = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.grb1.SuspendLayout();
             this.grb2.SuspendLayout();
             this.grdMultiplication.SuspendLayout();
             this.grbAddition.SuspendLayout();
             this.grb3.SuspendLayout();
-            this.grbBestApprox.SuspendLayout();
+            this.grbHier.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -300,15 +299,16 @@
             // 
             // grb3
             // 
+            this.grb3.Controls.Add(this.btnClear);
+            this.grb3.Controls.Add(this.grbHier);
             this.grb3.Controls.Add(this.txtCalcWithP6);
             this.grb3.Controls.Add(this.txtCalcWithP5);
             this.grb3.Controls.Add(this.txtCalcWithP4);
+            this.grb3.Controls.Add(this.btnStartSession);
             this.grb3.Controls.Add(this.txtCalcWithP3);
             this.grb3.Controls.Add(this.txtCalcWithP2);
             this.grb3.Controls.Add(this.txtCalcWithP1);
             this.grb3.Controls.Add(this.txtCalcWithMath);
-            this.grb3.Controls.Add(this.grbBestApprox);
-            this.grb3.Controls.Add(this.btnStartSession);
             this.grb3.Controls.Add(this.cbxCalculateSinValueWithP6);
             this.grb3.Controls.Add(this.cbxCalculateSinValueWithP5);
             this.grb3.Controls.Add(this.cbxCalculateSinValueWithP4);
@@ -319,149 +319,94 @@
             this.grb3.Controls.Add(this.cbxGenerateRandom);
             this.grb3.Location = new System.Drawing.Point(376, 64);
             this.grb3.Name = "grb3";
-            this.grb3.Size = new System.Drawing.Size(394, 303);
+            this.grb3.Size = new System.Drawing.Size(394, 419);
             this.grb3.TabIndex = 3;
             this.grb3.TabStop = false;
             this.grb3.Text = "3. Aproximari polinomiale ale functiei sin";
             // 
+            // grbHier
+            // 
+            this.grbHier.Controls.Add(this.lblTime);
+            this.grbHier.Controls.Add(this.txtTime);
+            this.grbHier.Controls.Add(this.lblBestApprox);
+            this.grbHier.Controls.Add(this.txtBestApprox);
+            this.grbHier.Location = new System.Drawing.Point(15, 211);
+            this.grbHier.Name = "grbHier";
+            this.grbHier.Size = new System.Drawing.Size(370, 106);
+            this.grbHier.TabIndex = 17;
+            this.grbHier.TabStop = false;
+            this.grbHier.Text = "Ierarhii";
+            // 
+            // lblBestApprox
+            // 
+            this.lblBestApprox.AutoSize = true;
+            this.lblBestApprox.Location = new System.Drawing.Point(9, 21);
+            this.lblBestApprox.Name = "lblBestApprox";
+            this.lblBestApprox.Size = new System.Drawing.Size(261, 13);
+            this.lblBestApprox.TabIndex = 6;
+            this.lblBestApprox.Text = "In functie de aproximarea cat mai apropiata a valorilor:";
+            // 
+            // txtBestApprox
+            // 
+            this.txtBestApprox.Enabled = false;
+            this.txtBestApprox.Location = new System.Drawing.Point(12, 37);
+            this.txtBestApprox.Name = "txtBestApprox";
+            this.txtBestApprox.Size = new System.Drawing.Size(342, 20);
+            this.txtBestApprox.TabIndex = 7;
+            // 
             // txtCalcWithP6
             // 
-            this.txtCalcWithP6.Location = new System.Drawing.Point(288, 188);
+            this.txtCalcWithP6.Location = new System.Drawing.Point(250, 179);
             this.txtCalcWithP6.Name = "txtCalcWithP6";
-            this.txtCalcWithP6.Size = new System.Drawing.Size(100, 20);
+            this.txtCalcWithP6.Size = new System.Drawing.Size(119, 20);
             this.txtCalcWithP6.TabIndex = 16;
             // 
             // txtCalcWithP5
             // 
-            this.txtCalcWithP5.Location = new System.Drawing.Point(288, 165);
+            this.txtCalcWithP5.Location = new System.Drawing.Point(250, 156);
             this.txtCalcWithP5.Name = "txtCalcWithP5";
-            this.txtCalcWithP5.Size = new System.Drawing.Size(100, 20);
+            this.txtCalcWithP5.Size = new System.Drawing.Size(119, 20);
             this.txtCalcWithP5.TabIndex = 15;
             // 
             // txtCalcWithP4
             // 
-            this.txtCalcWithP4.Location = new System.Drawing.Point(288, 142);
+            this.txtCalcWithP4.Location = new System.Drawing.Point(250, 133);
             this.txtCalcWithP4.Name = "txtCalcWithP4";
-            this.txtCalcWithP4.Size = new System.Drawing.Size(100, 20);
+            this.txtCalcWithP4.Size = new System.Drawing.Size(119, 20);
             this.txtCalcWithP4.TabIndex = 14;
             // 
             // txtCalcWithP3
             // 
-            this.txtCalcWithP3.Location = new System.Drawing.Point(288, 119);
+            this.txtCalcWithP3.Location = new System.Drawing.Point(250, 110);
             this.txtCalcWithP3.Name = "txtCalcWithP3";
-            this.txtCalcWithP3.Size = new System.Drawing.Size(100, 20);
+            this.txtCalcWithP3.Size = new System.Drawing.Size(119, 20);
             this.txtCalcWithP3.TabIndex = 13;
             // 
             // txtCalcWithP2
             // 
-            this.txtCalcWithP2.Location = new System.Drawing.Point(288, 96);
+            this.txtCalcWithP2.Location = new System.Drawing.Point(250, 87);
             this.txtCalcWithP2.Name = "txtCalcWithP2";
-            this.txtCalcWithP2.Size = new System.Drawing.Size(100, 20);
+            this.txtCalcWithP2.Size = new System.Drawing.Size(119, 20);
             this.txtCalcWithP2.TabIndex = 12;
             // 
             // txtCalcWithP1
             // 
-            this.txtCalcWithP1.Location = new System.Drawing.Point(288, 73);
+            this.txtCalcWithP1.Location = new System.Drawing.Point(250, 64);
             this.txtCalcWithP1.Name = "txtCalcWithP1";
-            this.txtCalcWithP1.Size = new System.Drawing.Size(100, 20);
+            this.txtCalcWithP1.Size = new System.Drawing.Size(119, 20);
             this.txtCalcWithP1.TabIndex = 11;
             // 
             // txtCalcWithMath
             // 
-            this.txtCalcWithMath.Location = new System.Drawing.Point(288, 50);
+            this.txtCalcWithMath.Location = new System.Drawing.Point(250, 41);
             this.txtCalcWithMath.Name = "txtCalcWithMath";
-            this.txtCalcWithMath.Size = new System.Drawing.Size(100, 20);
+            this.txtCalcWithMath.Size = new System.Drawing.Size(119, 20);
             this.txtCalcWithMath.TabIndex = 10;
-            // 
-            // grbBestApprox
-            // 
-            this.grbBestApprox.Controls.Add(this.cbxP6);
-            this.grbBestApprox.Controls.Add(this.cbxP5);
-            this.grbBestApprox.Controls.Add(this.cbxP4);
-            this.grbBestApprox.Controls.Add(this.cbxP3);
-            this.grbBestApprox.Controls.Add(this.cbxP2);
-            this.grbBestApprox.Controls.Add(this.cbxP1);
-            this.grbBestApprox.Location = new System.Drawing.Point(53, 213);
-            this.grbBestApprox.Name = "grbBestApprox";
-            this.grbBestApprox.Size = new System.Drawing.Size(280, 47);
-            this.grbBestApprox.TabIndex = 9;
-            this.grbBestApprox.TabStop = false;
-            this.grbBestApprox.Text = "Cea mai buna aproximatie a functiei sin o fac:";
-            // 
-            // cbxP6
-            // 
-            this.cbxP6.AutoSize = true;
-            this.cbxP6.Location = new System.Drawing.Point(231, 18);
-            this.cbxP6.Name = "cbxP6";
-            this.cbxP6.Size = new System.Drawing.Size(39, 17);
-            this.cbxP6.TabIndex = 15;
-            this.cbxP6.Text = "P6";
-            this.cbxP6.UseVisualStyleBackColor = true;
-            // 
-            // cbxP5
-            // 
-            this.cbxP5.AutoSize = true;
-            this.cbxP5.Location = new System.Drawing.Point(186, 18);
-            this.cbxP5.Name = "cbxP5";
-            this.cbxP5.Size = new System.Drawing.Size(39, 17);
-            this.cbxP5.TabIndex = 14;
-            this.cbxP5.Text = "P5";
-            this.cbxP5.UseVisualStyleBackColor = true;
-            // 
-            // cbxP4
-            // 
-            this.cbxP4.AutoSize = true;
-            this.cbxP4.Location = new System.Drawing.Point(141, 18);
-            this.cbxP4.Name = "cbxP4";
-            this.cbxP4.Size = new System.Drawing.Size(39, 17);
-            this.cbxP4.TabIndex = 13;
-            this.cbxP4.Text = "P4";
-            this.cbxP4.UseVisualStyleBackColor = true;
-            // 
-            // cbxP3
-            // 
-            this.cbxP3.AutoSize = true;
-            this.cbxP3.Location = new System.Drawing.Point(96, 18);
-            this.cbxP3.Name = "cbxP3";
-            this.cbxP3.Size = new System.Drawing.Size(39, 17);
-            this.cbxP3.TabIndex = 12;
-            this.cbxP3.Text = "P3";
-            this.cbxP3.UseVisualStyleBackColor = true;
-            // 
-            // cbxP2
-            // 
-            this.cbxP2.AutoSize = true;
-            this.cbxP2.Location = new System.Drawing.Point(51, 18);
-            this.cbxP2.Name = "cbxP2";
-            this.cbxP2.Size = new System.Drawing.Size(39, 17);
-            this.cbxP2.TabIndex = 11;
-            this.cbxP2.Text = "P2";
-            this.cbxP2.UseVisualStyleBackColor = true;
-            // 
-            // cbxP1
-            // 
-            this.cbxP1.AutoSize = true;
-            this.cbxP1.Location = new System.Drawing.Point(6, 18);
-            this.cbxP1.Name = "cbxP1";
-            this.cbxP1.Size = new System.Drawing.Size(39, 17);
-            this.cbxP1.TabIndex = 10;
-            this.cbxP1.Text = "P1";
-            this.cbxP1.UseVisualStyleBackColor = true;
-            // 
-            // btnStartSession
-            // 
-            this.btnStartSession.Location = new System.Drawing.Point(53, 266);
-            this.btnStartSession.Name = "btnStartSession";
-            this.btnStartSession.Size = new System.Drawing.Size(116, 23);
-            this.btnStartSession.TabIndex = 8;
-            this.btnStartSession.Text = "Porneste Sesiunea";
-            this.btnStartSession.UseVisualStyleBackColor = true;
-            this.btnStartSession.Click += new System.EventHandler(this.btnStartSession_Click);
             // 
             // cbxCalculateSinValueWithP6
             // 
             this.cbxCalculateSinValueWithP6.AutoSize = true;
-            this.cbxCalculateSinValueWithP6.Location = new System.Drawing.Point(53, 190);
+            this.cbxCalculateSinValueWithP6.Location = new System.Drawing.Point(15, 181);
             this.cbxCalculateSinValueWithP6.Name = "cbxCalculateSinValueWithP6";
             this.cbxCalculateSinValueWithP6.Size = new System.Drawing.Size(169, 17);
             this.cbxCalculateSinValueWithP6.TabIndex = 7;
@@ -471,7 +416,7 @@
             // cbxCalculateSinValueWithP5
             // 
             this.cbxCalculateSinValueWithP5.AutoSize = true;
-            this.cbxCalculateSinValueWithP5.Location = new System.Drawing.Point(53, 167);
+            this.cbxCalculateSinValueWithP5.Location = new System.Drawing.Point(15, 158);
             this.cbxCalculateSinValueWithP5.Name = "cbxCalculateSinValueWithP5";
             this.cbxCalculateSinValueWithP5.Size = new System.Drawing.Size(169, 17);
             this.cbxCalculateSinValueWithP5.TabIndex = 6;
@@ -481,7 +426,7 @@
             // cbxCalculateSinValueWithP4
             // 
             this.cbxCalculateSinValueWithP4.AutoSize = true;
-            this.cbxCalculateSinValueWithP4.Location = new System.Drawing.Point(53, 144);
+            this.cbxCalculateSinValueWithP4.Location = new System.Drawing.Point(15, 135);
             this.cbxCalculateSinValueWithP4.Name = "cbxCalculateSinValueWithP4";
             this.cbxCalculateSinValueWithP4.Size = new System.Drawing.Size(169, 17);
             this.cbxCalculateSinValueWithP4.TabIndex = 5;
@@ -491,7 +436,7 @@
             // cbxCalculateSinValueWithP3
             // 
             this.cbxCalculateSinValueWithP3.AutoSize = true;
-            this.cbxCalculateSinValueWithP3.Location = new System.Drawing.Point(53, 121);
+            this.cbxCalculateSinValueWithP3.Location = new System.Drawing.Point(15, 112);
             this.cbxCalculateSinValueWithP3.Name = "cbxCalculateSinValueWithP3";
             this.cbxCalculateSinValueWithP3.Size = new System.Drawing.Size(169, 17);
             this.cbxCalculateSinValueWithP3.TabIndex = 4;
@@ -501,7 +446,7 @@
             // cbxCalculateSinValueWithP2
             // 
             this.cbxCalculateSinValueWithP2.AutoSize = true;
-            this.cbxCalculateSinValueWithP2.Location = new System.Drawing.Point(53, 98);
+            this.cbxCalculateSinValueWithP2.Location = new System.Drawing.Point(15, 89);
             this.cbxCalculateSinValueWithP2.Name = "cbxCalculateSinValueWithP2";
             this.cbxCalculateSinValueWithP2.Size = new System.Drawing.Size(169, 17);
             this.cbxCalculateSinValueWithP2.TabIndex = 3;
@@ -511,7 +456,7 @@
             // cbxCalculateSinValueWithP1
             // 
             this.cbxCalculateSinValueWithP1.AutoSize = true;
-            this.cbxCalculateSinValueWithP1.Location = new System.Drawing.Point(53, 75);
+            this.cbxCalculateSinValueWithP1.Location = new System.Drawing.Point(15, 66);
             this.cbxCalculateSinValueWithP1.Name = "cbxCalculateSinValueWithP1";
             this.cbxCalculateSinValueWithP1.Size = new System.Drawing.Size(169, 17);
             this.cbxCalculateSinValueWithP1.TabIndex = 2;
@@ -521,7 +466,7 @@
             // cbxCalculateSinValueWithMath
             // 
             this.cbxCalculateSinValueWithMath.AutoSize = true;
-            this.cbxCalculateSinValueWithMath.Location = new System.Drawing.Point(53, 52);
+            this.cbxCalculateSinValueWithMath.Location = new System.Drawing.Point(15, 43);
             this.cbxCalculateSinValueWithMath.Name = "cbxCalculateSinValueWithMath";
             this.cbxCalculateSinValueWithMath.Size = new System.Drawing.Size(217, 17);
             this.cbxCalculateSinValueWithMath.TabIndex = 1;
@@ -531,18 +476,55 @@
             // cbxGenerateRandom
             // 
             this.cbxGenerateRandom.AutoSize = true;
-            this.cbxGenerateRandom.Location = new System.Drawing.Point(53, 28);
+            this.cbxGenerateRandom.Location = new System.Drawing.Point(15, 19);
             this.cbxGenerateRandom.Name = "cbxGenerateRandom";
             this.cbxGenerateRandom.Size = new System.Drawing.Size(167, 17);
             this.cbxGenerateRandom.TabIndex = 0;
             this.cbxGenerateRandom.Text = "Genereaza 100000 nr random";
             this.cbxGenerateRandom.UseVisualStyleBackColor = true;
             // 
+            // btnStartSession
+            // 
+            this.btnStartSession.Location = new System.Drawing.Point(15, 323);
+            this.btnStartSession.Name = "btnStartSession";
+            this.btnStartSession.Size = new System.Drawing.Size(116, 23);
+            this.btnStartSession.TabIndex = 8;
+            this.btnStartSession.Text = "Porneste Sesiunea";
+            this.btnStartSession.UseVisualStyleBackColor = true;
+            this.btnStartSession.Click += new System.EventHandler(this.btnStartSession_Click);
+            // 
+            // lblTime
+            // 
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(9, 60);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(211, 13);
+            this.lblTime.TabIndex = 8;
+            this.lblTime.Text = "In functie de timpul de calcul cat mai redus:";
+            // 
+            // txtTime
+            // 
+            this.txtTime.Enabled = false;
+            this.txtTime.Location = new System.Drawing.Point(12, 76);
+            this.txtTime.Name = "txtTime";
+            this.txtTime.Size = new System.Drawing.Size(342, 20);
+            this.txtTime.TabIndex = 9;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(137, 323);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(107, 23);
+            this.btnClear.TabIndex = 18;
+            this.btnClear.Text = "Curata Rezultatele";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // Tema1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 397);
+            this.ClientSize = new System.Drawing.Size(1013, 544);
             this.Controls.Add(this.grb3);
             this.Controls.Add(this.grb2);
             this.Controls.Add(this.grb1);
@@ -558,8 +540,8 @@
             this.grbAddition.PerformLayout();
             this.grb3.ResumeLayout(false);
             this.grb3.PerformLayout();
-            this.grbBestApprox.ResumeLayout(false);
-            this.grbBestApprox.PerformLayout();
+            this.grbHier.ResumeLayout(false);
+            this.grbHier.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -599,13 +581,6 @@
         private System.Windows.Forms.CheckBox cbxCalculateSinValueWithP3;
         private System.Windows.Forms.CheckBox cbxCalculateSinValueWithP2;
         private System.Windows.Forms.CheckBox cbxCalculateSinValueWithP1;
-        private System.Windows.Forms.GroupBox grbBestApprox;
-        private System.Windows.Forms.CheckBox cbxP6;
-        private System.Windows.Forms.CheckBox cbxP5;
-        private System.Windows.Forms.CheckBox cbxP4;
-        private System.Windows.Forms.CheckBox cbxP3;
-        private System.Windows.Forms.CheckBox cbxP2;
-        private System.Windows.Forms.CheckBox cbxP1;
         private System.Windows.Forms.TextBox txtCalcWithP6;
         private System.Windows.Forms.TextBox txtCalcWithP5;
         private System.Windows.Forms.TextBox txtCalcWithP4;
@@ -613,6 +588,12 @@
         private System.Windows.Forms.TextBox txtCalcWithP2;
         private System.Windows.Forms.TextBox txtCalcWithP1;
         private System.Windows.Forms.TextBox txtCalcWithMath;
+        private System.Windows.Forms.GroupBox grbHier;
+        private System.Windows.Forms.Label lblBestApprox;
+        private System.Windows.Forms.TextBox txtBestApprox;
+        private System.Windows.Forms.Label lblTime;
+        private System.Windows.Forms.TextBox txtTime;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 
