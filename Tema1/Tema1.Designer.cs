@@ -533,9 +533,9 @@
             this.cbxGenerateRandom.AutoSize = true;
             this.cbxGenerateRandom.Location = new System.Drawing.Point(53, 28);
             this.cbxGenerateRandom.Name = "cbxGenerateRandom";
-            this.cbxGenerateRandom.Size = new System.Drawing.Size(161, 17);
+            this.cbxGenerateRandom.Size = new System.Drawing.Size(167, 17);
             this.cbxGenerateRandom.TabIndex = 0;
-            this.cbxGenerateRandom.Text = "Genereaza 10000 nr random";
+            this.cbxGenerateRandom.Text = "Genereaza 100000 nr random";
             this.cbxGenerateRandom.UseVisualStyleBackColor = true;
             // 
             // Tema1

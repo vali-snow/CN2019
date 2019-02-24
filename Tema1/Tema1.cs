@@ -49,10 +49,10 @@ namespace Tema1
 
         private void btnStartSession_Click(object sender, EventArgs e)
         {
-            // Generate 10000 random numbers
-            var randomNumbers = new double[10000];
+            // Generate 100000 random numbers
+            var randomNumbers = new double[100000];
             Random random = new Random();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 randomNumbers[i] = Math.PI / 2 * (random.NextDouble() * 2 - 1);
             }
@@ -61,9 +61,9 @@ namespace Tema1
             Stopwatch stopwatch = new Stopwatch();
 
             // Calculate exact sin value for numbers
-            var sinExact = new double[10000];
+            var sinExact = new double[100000];
             stopwatch.Start();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 sinExact[i] = Math.Sin(randomNumbers[i]);
             }
@@ -72,9 +72,9 @@ namespace Tema1
             txtCalcWithMath.Text = $"ET in ms: {stopwatch.ElapsedMilliseconds}";
 
             // Calculate sin value with P1
-            var sinP1 = new double[10000];
+            var sinP1 = new double[100000];
             stopwatch.Restart();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 sinP1[i] = CalculatePolinom(1, randomNumbers[i]);
             }
@@ -83,9 +83,9 @@ namespace Tema1
             txtCalcWithP1.Text = $"ET in ms: {stopwatch.ElapsedMilliseconds}";
 
             // Calculate sin value with P2
-            var sinP2 = new double[10000];
+            var sinP2 = new double[100000];
             stopwatch.Restart();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 sinP2[i] = CalculatePolinom(2, randomNumbers[i]);
             }
@@ -94,9 +94,9 @@ namespace Tema1
             txtCalcWithP2.Text = $"ET in ms: {stopwatch.ElapsedMilliseconds}";
 
             // Calculate sin value with P3
-            var sinP3 = new double[10000];
+            var sinP3 = new double[100000];
             stopwatch.Restart();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 sinP3[i] = CalculatePolinom(3, randomNumbers[i]);
             }
@@ -105,9 +105,9 @@ namespace Tema1
             txtCalcWithP3.Text = $"ET in ms: {stopwatch.ElapsedMilliseconds}";
 
             // Calculate sin value with P4
-            var sinP4 = new double[10000];
+            var sinP4 = new double[100000];
             stopwatch.Restart();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 sinP4[i] = CalculatePolinom(4, randomNumbers[i]);
             }
@@ -116,9 +116,9 @@ namespace Tema1
             txtCalcWithP4.Text = $"ET in ms: {stopwatch.ElapsedMilliseconds}";
 
             // Calculate sin value with P5
-            var sinP5 = new double[10000];
+            var sinP5 = new double[100000];
             stopwatch.Restart();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 sinP5[i] = CalculatePolinom(5, randomNumbers[i]);
             }
@@ -127,9 +127,9 @@ namespace Tema1
             txtCalcWithP5.Text = $"ET in ms: {stopwatch.ElapsedMilliseconds}";
 
             // Calculate sin value with P6
-            var sinP6 = new double[10000];
+            var sinP6 = new double[100000];
             stopwatch.Restart();
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 sinP6[i] = CalculatePolinom(6, randomNumbers[i]);
             }
@@ -139,7 +139,7 @@ namespace Tema1
 
             // Calculate best approximation between P1-P6
             var bestAproximation = new Dictionary<int, int> { { 1,0}, { 2,0}, {3,0 }, { 4,0}, { 5,0}, { 6,0} };
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100000; i++)
             {
                 var row = new Dictionary<int, double>() { { 1, sinP1[i] }, { 2, sinP2[i] }, { 3, sinP3[i] }, { 4, sinP4[i] }, { 5, sinP5[i] }, { 6, sinP6[i] } };
                 foreach (var item in row.OrderBy(o => Math.Abs(sinExact[i] - o.Value)).Take(3))
