@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tema1", "Tema1\Tema1.csproj", "{81864A4F-01BD-468C-B4E4-47391A81A9DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tema2Logic", "ConsoleApp1\Tema2Logic.csproj", "{314CAC01-C106-4BBB-A199-2756EB007D43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{81864A4F-01BD-468C-B4E4-47391A81A9DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81864A4F-01BD-468C-B4E4-47391A81A9DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81864A4F-01BD-468C-B4E4-47391A81A9DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{314CAC01-C106-4BBB-A199-2756EB007D43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{314CAC01-C106-4BBB-A199-2756EB007D43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{314CAC01-C106-4BBB-A199-2756EB007D43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{314CAC01-C106-4BBB-A199-2756EB007D43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
