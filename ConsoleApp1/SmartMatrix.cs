@@ -9,42 +9,82 @@ namespace Tema2Logic
   public class SmartMatrix
   {
     private double[,] Ainit;
-    private Matrix<double> A;
+    private double[,] A;
+    
 
-    private Matrix<double> L;
-    private Matrix<double> U;
+    private double[] Binit;
+    private double[] Y;
+
+    private double[] X;
+    private double norma;
+    double[] e;
     private int n;
     private int precizie;
     public SmartMatrix()
     {
       this.n = 3;
-      L = DenseMatrix.OfArray(new double[n, n]);
-      U = DenseMatrix.OfArray(new double[n, n]);
 
-      this.A = DenseMatrix.OfArray(new double[,] {
+      this.X = new double[n];
+      this.Y = new double[n];
+      this.A = new double[n, n];
+      this.e = new double[n];
+      this.Binit = new double[] { 1, 2, 3 };
+      this.Ainit = new double[,] {
         {1.5,3,3},
         {2,6.5,14},
-        {1,3,8}});
-      this.Ainit = new double[3,3];
-      
+        {1,3,8}};
+
+
       this.precizie = 5;
     }
-    public void printLU()
+    private void solveForY()
     {
-      for (int i = 0; i < n; i++)
+      
+      for (int i = 0; i <n; i++)
       {
-        for (int j = 0; j < n; j++)
+        double sum = 0;
+        for(int j = 0; j < i;j++)
         {
-          Console.Write(string.Format("{0} ", L[i, j]));
+          sum += A[i,j]*Y[j];
         }
-        Console.Write(Environment.NewLine + Environment.NewLine);
+        Y[i] = (Binit[i] - sum) / A[i, i];
       }
 
       for (int i = 0; i < n; i++)
       {
+        Console.WriteLine(Y[i]);
+      }
+      Console.WriteLine();
+      Console.WriteLine();
+    }
+    public void solveForX()
+    {
+      solveForY();
+      for (int i = n-1; i >=0 ; i--)
+      {
+        double sum = 0;
+        for (int j = i+1; j < n; j++)
+        {
+          sum += A[i, j] * X[j];
+          
+        }
+        X[i] = (Y[i] - sum);
+      }
+
+      for (int i = 0; i < n; i++)
+      {
+        Console.WriteLine(X[i]);
+      }
+    }
+    
+    public void printLU()
+    {
+      
+      for (int i = 0; i < n; i++)
+      {
         for (int j = 0; j < n; j++)
         {
-          Console.Write(string.Format("{0} ", U[i, j]));
+          Console.Write(string.Format("{0} ", A[i, j]));
         }
         Console.Write(Environment.NewLine + Environment.NewLine);
       }
@@ -54,30 +94,46 @@ namespace Tema2Logic
       double det = 1;
       for(int i =0; i < n; i++)
       {
-        det *= L[i, i];
+        det *= A[i, i];
       }
       return det;
+    }
+    public double getNorma()
+    {
+      for (int i = 0; i < n; i++)
+      {
+         
+        double sumProd = 0;
+        for (int j = 0; j < n; j++)
+          sumProd += Ainit[i,j] * X[j];
+        e[i] += Math.Pow((sumProd - Binit[i]), 2);
+      }
+
+      for (int i = 0; i < n; i++)
+        norma += e[i];
+      norma = Math.Sqrt(norma);
+
+      return norma;
     }
     public bool descompunere()
     {
       //calculam descompunerea LU
       for (int p = 0; p < n; p++)
       {
-        //unde p este un pas din descompunere
+
+        
         for (int i = 0; i <= p - 1; i++)
         {
-          //double sumOfK_l = 0;
+         
           double sumOfK_u = 0;
           for (int k = 0; k < i; k++)
           {
-            //sumOfK_l += L[p, k] * U[k, i];
-            sumOfK_u += L[i, k] * U[k, p];
+            
+            sumOfK_u += A[i, k] * A[k, p];
           }
-          //L[p, i] = A[p, i] - sumOfK_l;
-
-          if (L[i, i] != 0)
+          if (A[i, i] != 0)
           {
-            U[i, p] = (A[i, p] - sumOfK_u) / L[i, i];
+            A[i, p] = (Ainit[i, p] - sumOfK_u) / A[i, i];
           }
           else
           {
@@ -85,23 +141,18 @@ namespace Tema2Logic
           }
         }//End i for
 
-        for (int i = 0; i <= p;i++)
+        for (int i = 0; i <= p; i++)
         {
-          if (i == p)
-          {
-            U[i, p] = 1;
-          }
           double sumOfK_l = 0;
-          //double sumOfK_u = 0;
           for (int k = 0; k < i; k++)
           {
-            sumOfK_l += L[p, k] * U[k, i];
-            //sumOfK_u += L[i, k] * U[k, p];
+            sumOfK_l += A[p, k] * A[k, i];
+
           }
-          L[p, i] = A[p, i] - sumOfK_l;
-          
+          A[p, i] = Ainit[p, i] - sumOfK_l;
+
         }//End i for 
-        
+
       }//End p for
       return true;
       

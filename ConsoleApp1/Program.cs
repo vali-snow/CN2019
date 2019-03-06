@@ -8,15 +8,13 @@ namespace Tema2Logic
     static void Main(string[] args)
     {
       SmartMatrix sm = new SmartMatrix();
-      if (sm.descompunere())
-      {
-        sm.printLU();
-        Console.WriteLine(sm.getDeterminant());
-      }
-      else
-      {
-        Console.WriteLine("Nu are matrice patratica");
-      }
+      sm.descompunere();
+      //sm.printLU();
+      sm.solveForX();
+      Console.WriteLine(sm.getNorma());
+
+      Matrix<double> libraryMatrix;
+      
       
     }
   }
