@@ -49,13 +49,6 @@ namespace Tema2Logic
         }
         Y[i] = (Binit[i] - sum) / A[i, i];
       }
-
-      for (int i = 0; i < n; i++)
-      {
-        Console.WriteLine(Y[i]);
-      }
-      Console.WriteLine();
-      Console.WriteLine();
     }
     public void solveForX()
     {
@@ -71,6 +64,7 @@ namespace Tema2Logic
         X[i] = (Y[i] - sum);
       }
 
+      Console.WriteLine("Solutia X: ");
       for (int i = 0; i < n; i++)
       {
         Console.WriteLine(X[i]);
@@ -79,7 +73,7 @@ namespace Tema2Logic
     
     public void printLU()
     {
-      
+      Console.WriteLine("Matricea LU: ");
       for (int i = 0; i < n; i++)
       {
         for (int j = 0; j < n; j++)
@@ -156,6 +150,44 @@ namespace Tema2Logic
       }//End p for
       return true;
       
+    }
+    public void librariesNorms_1()
+    {
+      Matrix<double> libAinit = DenseMatrix.OfArray(Ainit);
+      Vector<double> libBinit = DenseVector.OfArray(Binit);
+      Vector<double> libX = libAinit.Solve(libBinit);
+      double[] e = new double[libX.Count];
+      for (int i = 0; i < n; i++)
+      {
+        e[i] += Math.Pow((X[i] - libX[i]), 2);
+      }
+      double norma = 0;
+      for (int i = 0; i < n; i++)
+        norma += e[i];
+      norma = Math.Sqrt(norma);
+      Console.WriteLine("Norma ||X - Xlib||: "+norma);
+      
+    }
+    public void librariesNorms_2()
+    {
+      Matrix<double> libAinit = DenseMatrix.OfArray(Ainit);
+      Matrix<double> libAinverse = libAinit.Inverse(); 
+      
+      
+      double[] e = new double[n];
+      for (int i = 0; i < n; i++)
+      {
+        double sumProd = 0;
+        for (int j = 0; j < n; j++)
+          sumProd += libAinverse[i, j] * Binit[j];
+
+        e[i] += Math.Pow((X[i] - sumProd), 2);
+      }
+      double norma = 0;
+      for (int i = 0; i < n; i++)
+        norma += e[i];
+      norma = Math.Sqrt(norma);
+      Console.WriteLine("Norma ||X - Ainverse*Binit||: " + norma);
     }
   }
 }

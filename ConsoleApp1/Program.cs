@@ -9,9 +9,14 @@ namespace Tema2Logic
     {
       SmartMatrix sm = new SmartMatrix();
       sm.descompunere();
-      //sm.printLU();
+      sm.printLU();
       sm.solveForX();
-      Console.WriteLine(sm.getNorma());
+      Console.WriteLine();
+      Console.WriteLine($"Norma solutiei {sm.getNorma()}");
+      Console.WriteLine();
+      sm.librariesNorms_1();
+      Console.WriteLine();
+      sm.librariesNorms_2();
 
       Matrix<double> libraryMatrix;
       
