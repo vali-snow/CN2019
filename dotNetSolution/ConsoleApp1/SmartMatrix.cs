@@ -10,11 +10,8 @@ namespace Tema2Logic
   {
     private double[,] Ainit;
     private double[,] A;
-    
-
     private double[] Binit;
     private double[] Y;
-
     private double[] X;
     private double norma;
     double[] e;
@@ -23,7 +20,6 @@ namespace Tema2Logic
     public SmartMatrix()
     {
       this.n = 3;
-
       this.X = new double[n];
       this.Y = new double[n];
       this.A = new double[n, n];
@@ -68,6 +64,14 @@ namespace Tema2Logic
       for (int i = 0; i < n; i++)
       {
         Console.WriteLine(X[i]);
+      }
+      Console.WriteLine("Xlib: ");
+      Matrix<double> libAinit = DenseMatrix.OfArray(Ainit);
+      Vector<double> libBinit = DenseVector.OfArray(Binit);
+      Vector<double> libX = libAinit.Solve(libBinit);
+      for(int i = 0; i < n; i++)
+      {
+        Console.WriteLine(libX[i]);
       }
     }
     
@@ -114,15 +118,11 @@ namespace Tema2Logic
       //calculam descompunerea LU
       for (int p = 0; p < n; p++)
       {
-
-        
         for (int i = 0; i <= p - 1; i++)
         {
-         
           double sumOfK_u = 0;
           for (int k = 0; k < i; k++)
           {
-            
             sumOfK_u += A[i, k] * A[k, p];
           }
           if (A[i, i] != 0)

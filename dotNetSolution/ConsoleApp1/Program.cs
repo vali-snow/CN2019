@@ -10,6 +10,7 @@ namespace Tema2Logic
       SmartMatrix sm = new SmartMatrix();
       sm.descompunere();
       sm.printLU();
+      Console.WriteLine("Determinant de A: " + sm.getDeterminant());
       sm.solveForX();
       Console.WriteLine();
       Console.WriteLine($"Norma solutiei {sm.getNorma()}");
