@@ -1,21 +1,24 @@
 const Decimal = require('decimal');
 class MatrixElement{
 
+    //this.value should always be a decimal object
     constructor(value,row,column)
     {
-        this.value = new Decimal(value);
+        if(!(value instanceof Decimal))
+        {
+            throw "Not a decimal";
+        }
+        this.value = value;
         this.row = row;
         this.column = column;
     }
     setValue(value)
     {
-        delete this.value;
-        this.value = new Decimal(value);
-    }
-    setResult(result)
-    {
-        delete this.value;
-        this.value = result;
+        if(!(value instanceof Decimal))
+        {
+            throw "Not a decimal";
+        }
+        this.value = value;
     }
     getValue()
     {

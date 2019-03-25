@@ -9,22 +9,27 @@ class SparseMatrix{
     }
     addValue(value, row, column)
     {
-        if(row in this.elements)
+        if(!(value instanceof Decimal))
         {
-            let rowList = this.elements[row];
-            let matrixElem = rowList.filter( (elem) => elem.column === column);
+            throw "Not a decimal";
+        }
+        if(column in this.elements)
+        {
+            let columnList = this.elements[column];
+            let matrixElem = columnList.filter( (elem) => elem.row === row);
             if(matrixElem.length !== 0)
             {
-                matrixElem[0].setValue(value);
+                matrixElem[0].setValue(matrixElem[0].getValue().add(value));
             }
             else
             {
-                this.elements[row].push(new MatrixElement(value,row,column));
+                this.elements[column].push(new MatrixElement(value,row,column));
             }
         }
         else
         {
-            this.elements[row] = [];
+            this.elements[column] = [];
+            this.elements[column].push(new MatrixElement(value,row,column));
         }
         
     }

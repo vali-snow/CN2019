@@ -1,6 +1,6 @@
 const Decimal = require('decimal');
 
-class Dense{
+class DenseVector{
 
     constructor()
     {
@@ -8,7 +8,11 @@ class Dense{
     }
     addValue(value)
     {
-        this.valueList.push(new Decimal(value));
+        if(!(value instanceof Decimal))
+        {
+            throw "Not a decimal";
+        }
+        this.valueList.push(value);
     }
     getCount()
     {
@@ -21,9 +25,13 @@ class Dense{
     }
     getSetValue(index,value)
     {
+        if(!(value instanceof Decimal))
+        {
+            throw "Not a decimal";
+        }
         if(index < 0 && index >= this.valueList.length) throw "Index out of bounds";
-        this.valueList[index] = new Decimal(value);
+        this.valueList[index] = value;
     }
 }
 
-module.exports = Dense;
+module.exports = DenseVector;
