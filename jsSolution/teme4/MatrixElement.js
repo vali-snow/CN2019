@@ -1,4 +1,4 @@
-const Decimal = require('decimal');
+const Decimal = require('decimal.js');
 class MatrixElement{
 
     //this.value should always be a decimal object
