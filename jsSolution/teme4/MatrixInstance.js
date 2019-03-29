@@ -26,7 +26,8 @@ class MatrixInstance{
         let i = 2;
         while(linesRead[i] !== "")
         {
-            let line = linesRead[i].split(",");
+            let rawLine =  linesRead[i].split(",");
+            let line = rawLine.map(elem => elem.trim());
             //console.log(line[0],line[1],line[2]);
             let value = new Decimal(line[0]);
             let row = parseInt(line[1]);
