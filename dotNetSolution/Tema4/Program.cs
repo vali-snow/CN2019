@@ -6,22 +6,30 @@ using System.Threading.Tasks;
 using Tema3;
 namespace Tema4
 {
-  class Program
-  {
-    static void Main(string[] args)
+    public class Solver
     {
-      ReadFromFileResult m1 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice1.txt");
-      ReadFromFileResult m2 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice2.txt");
-      ReadFromFileResult m3 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice3.txt");
-      ReadFromFileResult m4 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice4.txt");
-      ReadFromFileResult m5 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice5.txt");
+        private ReadFromFileResult m1 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice1.txt");
+        private ReadFromFileResult m2 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice2.txt");
+        private ReadFromFileResult m3 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice3.txt");
+        private ReadFromFileResult m4 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice4.txt");
+        private ReadFromFileResult m5 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice5.txt");
+        public double norma1 { set; get; }
+        public double norma2 { set; get; }
+        public double norma3 { set; get; }
+        public double norma4 { set; get; }
+        public double norma5 { set; get; }
 
+        public Solver()
+        {
 
-            DenseVector xm1 = getSolution(m1.Matrix, m1.Vector, 0.8, Math.Pow(10, -7));
+        }
+        public bool solveM1()
+        {
+            DenseVector xm1 = Program.getSolution(m1.Matrix, m1.Vector, 0.8, Math.Pow(10, -7));
             if (xm1 != null)
             {
-                DenseVector AxOmega = scalarMultiplication(m1.Matrix, xm1);
-                double testNorma = calculNorma(AxOmega, m1.Vector);
+                DenseVector AxOmega = Program.scalarMultiplication(m1.Matrix, xm1);
+                norma1 = Program.calculNorma(AxOmega, m1.Vector);
 
                 //xm1.Values.ForEach(em => Console.WriteLine(Math.Round(em)));
                 bool correct = true;
@@ -35,51 +43,58 @@ namespace Tema4
                 }
                 if (correct)
                 {
-                    Console.WriteLine("x1 Solution found");
+                    return true;
                 }
                 else
                 {
-                    Console.WriteLine("Not found");
+                    return false;
                 }
             }
             else
             {
-                Console.WriteLine("Didnt work");
+                return false;
             }
-            DenseVector xm2 = getSolution(m2.Matrix, m2.Vector, 1.2, Math.Pow(10, -7));
+
+        }
+        public bool solveM2()
+        {
+            DenseVector xm2 = Program.getSolution(m2.Matrix, m2.Vector, 1.2, Math.Pow(10, -7));
             if (xm2 != null)
             {
-                DenseVector AxOmega = scalarMultiplication(m2.Matrix, xm2);
-                double testNorma = calculNorma(AxOmega, m2.Vector);
-                
+                DenseVector AxOmega = Program.scalarMultiplication(m2.Matrix, xm2);
+                norma2  = Program.calculNorma(AxOmega, m2.Vector);
+
                 bool correct = true;
-                for (int i = 0; i < xm2.Count;i++)
+                for (int i = 0; i < xm2.Count; i++)
                 {
-                    if(i != Math.Round(xm2.Values[i] * 6.0 / 10.0))
+                    if (i != Math.Round(xm2.Values[i] * 6.0 / 10.0))
                     {
                         correct = false;
                         break;
                     }
                 }
-                if(correct)
+                if (correct)
                 {
-                    Console.WriteLine("x2 Solution found");
+                    return true;
                 }
                 else
                 {
-                    Console.WriteLine("Not found");
+                    return false;
                 }
             }
             else
             {
-                Console.WriteLine("Didnt work");
+                return false;
             }
 
-            DenseVector xm3 = getSolution(m3.Matrix, m3.Vector, 0.8, Math.Pow(10, -7));
+        }
+        public bool solveM3()
+        {
+            DenseVector xm3 = Program.getSolution(m3.Matrix, m3.Vector, 0.8, Math.Pow(10, -7));
             if (xm3 != null)
             {
-                DenseVector AxOmega = scalarMultiplication(m3.Matrix, xm3);
-                double testNorma = calculNorma(AxOmega, m3.Vector);
+                DenseVector AxOmega = Program.scalarMultiplication(m3.Matrix, xm3);
+                norma3 = Program.calculNorma(AxOmega, m3.Vector);
 
                 bool correct = true;
                 for (int i = 0; i < xm3.Count; i++)
@@ -92,24 +107,27 @@ namespace Tema4
                 }
                 if (correct)
                 {
-                    Console.WriteLine("x3 Solution found");
+                    return true;
                 }
                 else
                 {
-                    Console.WriteLine("Not found");
+                    return false;
                 }
             }
             else
             {
-                Console.WriteLine("Didnt work");
+                return false;
             }
 
-            DenseVector xm4 = getSolution(m4.Matrix, m4.Vector, 0.8, Math.Pow(10, -7));
+        }
+        public bool solveM4()
+        {
+            DenseVector xm4 = Program.getSolution(m4.Matrix, m4.Vector, 0.8, Math.Pow(10, -7));
             if (xm4 != null)
             {
-              DenseVector AxOmega = scalarMultiplication(m4.Matrix, xm4);
-              double testNorma = calculNorma(AxOmega, m4.Vector);
-             
+                DenseVector AxOmega = Program.scalarMultiplication(m4.Matrix, xm4);
+                norma4 = Program.calculNorma(AxOmega, m4.Vector);
+
                 bool correct = true;
                 for (int i = 0; i < xm4.Count; i++)
                 {
@@ -121,122 +139,147 @@ namespace Tema4
                 }
                 if (correct)
                 {
-                    Console.WriteLine("x4 Solution found");
+                    return true;
                 }
                 else
                 {
-                    Console.WriteLine("Not found");
+                    return false;
                 }
             }
             else
             {
-              Console.WriteLine("Didnt work");
+                return false;
             }
-            DenseVector xm5 = getSolution(m5.Matrix, m5.Vector, 0.8, Math.Pow(10, -1));
+
+        }
+        public bool solveM5()
+        {
+            DenseVector xm5 = Program.getSolution(m5.Matrix, m5.Vector, 0.8, Math.Pow(10, -1));
             if (xm5 != null)
             {
-                DenseVector AxOmega = scalarMultiplication(m5.Matrix, xm5);
-                double testNorma = calculNorma(AxOmega, m5.Vector);
-                Console.WriteLine(testNorma);
+                DenseVector AxOmega = Program.scalarMultiplication(m5.Matrix, xm5);
+                norma5 = Program.calculNorma(AxOmega, m5.Vector);
+                bool correct = true;
+                for (int i = 0; i < xm5.Count; i++)
+                {
+                    if (2 != Math.Round(xm5.Values[i]))
+                    {
+                        correct = false;
+                        break;
+                    }
+                }
+                if (correct)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                Console.WriteLine("Didnt work");
+                return false;
             }
-           
 
 
         }
-        static DenseVector calculateNextVector(DenseVector oldVector, SparseMatrix matrixA, DenseVector vectorB, double omega)
-    {
-      DenseVector newVector = new DenseVector();
-      int n = matrixA.Elements.Count;
-      int i = 0;
-      while (i != n)
-      {
-        double sum1 = 0;
-        double sum2 = 0;
-        var aii = matrixA.Elements[i].FirstOrDefault(e => e.Column == i);
-        double oldXki = oldVector.Values[i];
-        double bi = vectorB.Values[i];
-
-        matrixA.Elements[i].ForEach(melem =>
+        public class Program
         {
-          if (melem.Column < i)
-          {
-            sum1 += newVector.Values[melem.Column] * melem.Value;
-          }
-          else
-          {
-            sum2 += oldVector.Values[melem.Column] * melem.Value;
-          }
-        });
-        newVector.AddValue(oldXki + omega / aii.Value * (bi - sum1 - sum2));
-        i++;
-      }
-      return newVector;
-    }
-    static double calculNorma(DenseVector v1, DenseVector v2)
-    {
-      double sum = 0;
-      int n = v1.Count;
-      for (int i = 0; i < n; i++)
-      {
-        sum += Math.Pow(v1.Values[i] - v2.Values[i], 2);
-      }
 
-      return Math.Sqrt(sum);
-    }
-    static DenseVector scalarMultiplication(SparseMatrix matrix, DenseVector vector)
-    {
-      DenseVector resultVector = new DenseVector();
-      for (int i = 0; i < vector.Count; i++)
-      {
-        var celula = 0D;
-        foreach (var element in matrix.Elements[i])
-        {
-          celula += vector.Values[element.Column] * element.Value;
+            public static DenseVector calculateNextVector(DenseVector oldVector, SparseMatrix matrixA, DenseVector vectorB, double omega)
+            {
+                DenseVector newVector = new DenseVector();
+                int n = matrixA.Elements.Count;
+                int i = 0;
+                while (i != n)
+                {
+                    double sum1 = 0;
+                    double sum2 = 0;
+                    var aii = matrixA.Elements[i].FirstOrDefault(e => e.Column == i);
+                    double oldXki = oldVector.Values[i];
+                    double bi = vectorB.Values[i];
+
+                    matrixA.Elements[i].ForEach(melem =>
+                    {
+                        if (melem.Column < i)
+                        {
+                            sum1 += newVector.Values[melem.Column] * melem.Value;
+                        }
+                        else
+                        {
+                            sum2 += oldVector.Values[melem.Column] * melem.Value;
+                        }
+                    });
+                    newVector.AddValue(oldXki + omega / aii.Value * (bi - sum1 - sum2));
+                    i++;
+                }
+                return newVector;
+            }
+            public static double calculNorma(DenseVector v1, DenseVector v2)
+            {
+                double sum = 0;
+                int n = v1.Count;
+                for (int i = 0; i < n; i++)
+                {
+                    sum += Math.Pow(v1.Values[i] - v2.Values[i], 2);
+                }
+
+                return Math.Sqrt(sum);
+            }
+            public static DenseVector scalarMultiplication(SparseMatrix matrix, DenseVector vector)
+            {
+                DenseVector resultVector = new DenseVector();
+                for (int i = 0; i < vector.Count; i++)
+                {
+                    var celula = 0D;
+                    foreach (var element in matrix.Elements[i])
+                    {
+                        celula += vector.Values[element.Column] * element.Value;
+                    }
+                    if (celula != 0) { resultVector.AddValue(celula); }
+                }
+                return resultVector;
+            }
+
+            public static DenseVector getSolution(
+                SparseMatrix matrixA,
+                DenseVector vectorB,
+                double omega,
+                double epsilon
+            )
+            {
+
+                DenseVector xc = new DenseVector();
+                DenseVector xp;
+
+                for (double i = 0; i < vectorB.Count; i++)
+                {
+                    xc.AddValue(i);
+                }
+
+                int k = 0;
+                double deltaX = 0;
+                do
+                {
+                    xp = xc;
+                    xc = calculateNextVector(xp, matrixA, vectorB, omega);
+                    deltaX = calculNorma(xc, xp);
+                    k++;
+                } while (deltaX >= epsilon && k <= 10000 && deltaX < Math.Pow(10, 8));
+
+                if (deltaX < epsilon)
+                {
+                    return xc;
+                }
+                else
+                {
+                    return null;
+                }
+            }
         }
-        if (celula != 0) { resultVector.AddValue(celula); }
-      }
-      return resultVector;
     }
-
-    static DenseVector getSolution(
-        SparseMatrix matrixA,
-        DenseVector vectorB,
-        double omega,
-        double epsilon
-    )
-    {
-
-      DenseVector xc = new DenseVector();
-      DenseVector xp;
-
-      for (double i = 0; i < vectorB.Count; i++)
-      {
-        xc.AddValue(i);
-      }
-
-      int k = 0;
-      double deltaX = 0;
-      do
-      { 
-        xp = xc;
-        xc = calculateNextVector(xp, matrixA, vectorB, omega);
-        deltaX = calculNorma(xc, xp);
-        k++;
-      } while (deltaX >= epsilon && k <= 10000 && deltaX < Math.Pow(10, 8));
-
-      if (deltaX < epsilon)
-      {
-        return xc;
-      }
-      else
-      {
-        return null;
-      }
-    }
-
-  }
 }
+
+  
+
