@@ -8,24 +8,26 @@ namespace Tema4
 {
     public class Solver
     {
+
         private ReadFromFileResult m1 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice1.txt");
         private ReadFromFileResult m2 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice2.txt");
         private ReadFromFileResult m3 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice3.txt");
         private ReadFromFileResult m4 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice4.txt");
         private ReadFromFileResult m5 = new ReadFromFileResult("C:\\Users\\TudorIacobuta\\Desktop\\CN2019\\dotNetSolution\\Tema4\\db\\matrice5.txt");
-        public double norma1 { set; get; }
-        public double norma2 { set; get; }
-        public double norma3 { set; get; }
-        public double norma4 { set; get; }
-        public double norma5 { set; get; }
+        public double norma1 { private set; get; }
+        public double norma2 { private set; get; }
+        public double norma3 { private set; get; }
+        public double norma4 { private set; get; }
+        public double norma5 { private set; get; }
+        public double omega { set; get; }
 
         public Solver()
         {
-
+            omega = 0.8;
         }
         public bool solveM1()
         {
-            DenseVector xm1 = Program.getSolution(m1.Matrix, m1.Vector, 0.8, Math.Pow(10, -7));
+            DenseVector xm1 = Program.getSolution(m1.Matrix, m1.Vector, omega, Math.Pow(10, -7));
             if (xm1 != null)
             {
                 DenseVector AxOmega = Program.scalarMultiplication(m1.Matrix, xm1);
@@ -58,7 +60,7 @@ namespace Tema4
         }
         public bool solveM2()
         {
-            DenseVector xm2 = Program.getSolution(m2.Matrix, m2.Vector, 1.2, Math.Pow(10, -7));
+            DenseVector xm2 = Program.getSolution(m2.Matrix, m2.Vector, omega, Math.Pow(10, -7));
             if (xm2 != null)
             {
                 DenseVector AxOmega = Program.scalarMultiplication(m2.Matrix, xm2);
@@ -90,7 +92,7 @@ namespace Tema4
         }
         public bool solveM3()
         {
-            DenseVector xm3 = Program.getSolution(m3.Matrix, m3.Vector, 0.8, Math.Pow(10, -7));
+            DenseVector xm3 = Program.getSolution(m3.Matrix, m3.Vector, omega, Math.Pow(10, -7));
             if (xm3 != null)
             {
                 DenseVector AxOmega = Program.scalarMultiplication(m3.Matrix, xm3);
@@ -122,7 +124,7 @@ namespace Tema4
         }
         public bool solveM4()
         {
-            DenseVector xm4 = Program.getSolution(m4.Matrix, m4.Vector, 0.8, Math.Pow(10, -7));
+            DenseVector xm4 = Program.getSolution(m4.Matrix, m4.Vector, omega, Math.Pow(10, -7));
             if (xm4 != null)
             {
                 DenseVector AxOmega = Program.scalarMultiplication(m4.Matrix, xm4);
@@ -154,7 +156,7 @@ namespace Tema4
         }
         public bool solveM5()
         {
-            DenseVector xm5 = Program.getSolution(m5.Matrix, m5.Vector, 0.8, Math.Pow(10, -1));
+            DenseVector xm5 = Program.getSolution(m5.Matrix, m5.Vector, omega, Math.Pow(10, -1));
             if (xm5 != null)
             {
                 DenseVector AxOmega = Program.scalarMultiplication(m5.Matrix, xm5);

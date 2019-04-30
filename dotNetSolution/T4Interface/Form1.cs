@@ -16,6 +16,7 @@ namespace T4Interface
         public Form1()
         {
             InitializeComponent();
+            omegaInput.Text = "0.8";
         }
 
         private void groupBox6_Enter(object sender, EventArgs e)
@@ -25,14 +26,16 @@ namespace T4Interface
 
         private void m1Btn_Click(object sender, EventArgs e)
         {
-            if(problemSover.solveM1())
+            problemSover.omega = double.Parse(omegaInput.Text);
+            if (problemSover.solveM1())
             {
+               
                 m1Check.Checked = true;
                 textBox1.Text = problemSover.norma1.ToString();
             }
             else
             {
-                textBox1.Text = "-1";
+                textBox1.Text = "Divergent";
             }
         }
 
@@ -43,53 +46,61 @@ namespace T4Interface
 
         private void m2Btn_Click(object sender, EventArgs e)
         {
+            problemSover.omega = double.Parse(omegaInput.Text);
             if (problemSover.solveM2())
             {
+                
                 m2Check.Checked = true;
                 textBox2.Text = problemSover.norma2.ToString();
             }
             else
             {
-                textBox2.Text = "-1";
+                textBox2.Text = "Divergent";
             }
         }
 
         private void m3Btn_Click(object sender, EventArgs e)
         {
+            problemSover.omega = double.Parse(omegaInput.Text);
             if (problemSover.solveM3())
             {
+                
                 m3Check.Checked = true;
                 textBox3.Text = problemSover.norma3.ToString();
             }
             else
             {
-                textBox3.Text = "-1";
+                textBox3.Text = "Divergent";
             }
         }
 
         private void m4Btn_Click(object sender, EventArgs e)
         {
+            problemSover.omega = double.Parse(omegaInput.Text);
             if (problemSover.solveM4())
             {
+                
                 m4Check.Checked = true;
                 textBox4.Text = problemSover.norma4.ToString();
             }
             else
             {
-                textBox4.Text = "-1";
+                textBox4.Text = "Divergent";
             }
         }
 
         private void m5Btn_Click(object sender, EventArgs e)
         {
+            problemSover.omega = double.Parse(omegaInput.Text);
             if (problemSover.solveM5())
             {
+                
                 m5Check.Checked = true;
                 textBox5.Text = problemSover.norma5.ToString();
             }
             else
             {
-                textBox5.Text = "-1";
+                textBox5.Text = "Divergent";
             }
         }
     }
